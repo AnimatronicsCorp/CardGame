@@ -24,6 +24,13 @@ jobs:
       run: dotnet restore
     - name: Format
       run: dotnet format --no-restore CardGame.sln
+    - name: Run .NET Code Analysis
+      uses: dotnet/code-analysis@v1
+      id: code-analysis
+      with:
+        solution: CardGame.sln
+        build-breaking: true
+        all-categories: all
     - name: Build
       run: dotnet build --no-restore
     # - name: Test
